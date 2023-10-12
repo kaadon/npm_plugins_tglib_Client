@@ -42,14 +42,33 @@ class TelgramBot {
         return this.bot
     }
 
-    async sendMessage(params)  {
+    async sendMessage(chatId,text,options = {})  {
        try {
-           await this.bot.send(...params)
+           await this.bot.sendMessage(chatId,text,options)
            //逻辑代码
            return Promise.resolve(true )
        } catch (e) {
            return Promise.reject(e)
        }
+    }
+    async setCommand(params) {
+        try {
+            await this.bot.setMyCommands(params);
+            //逻辑代码
+            return Promise.resolve(true )
+        } catch (e) {
+            return Promise.reject(e)
+        }
+    }
+
+    async error(chat_id, err) {
+        try {
+            await this.sendMessage(chat_id, err.message);
+            //逻辑代码
+            return Promise.resolve(true )
+        } catch (e) {
+            return Promise.reject(e)
+        }
     }
 }
 
