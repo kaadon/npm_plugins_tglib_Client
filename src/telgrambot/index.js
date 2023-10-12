@@ -44,8 +44,9 @@ class TelgramBot {
 
    async sendMessage(params){
        try {
+           await this.bot.send(...params)
            //逻辑代码
-           return Promise.resolve( await this.bot.send(...params))
+           return Promise.resolve(true )
        } catch (e) {
            return Promise.reject(e)
        }
