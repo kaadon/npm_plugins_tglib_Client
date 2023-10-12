@@ -1,20 +1,20 @@
 {
-  "name": "@kaadon.com/telgrambot",
+  "name": "@kaadon.com/telegrambot",
   "version": "0.0.1",
-  "description": "kaadon.com's plugins telgramBot",
+  "description": "kaadon.com's plugins telegramBot",
   "keywords": [
     "kaadon",
     "plugins",
-    "telgrambot"
+    "telegramBot"
   ],
-  "main": "telgrambot/index.js",
+  "main": "telegramBot/index.js",
   "author": "kaadon.com",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --out-dir telgrambot"
+    "build": "babel src --out-dir telegramBot"
   },
   "files": [
-    "/telgrambot"
+    "/telegramBot"
   ],
   "publishConfig": {
     "access": "public"
