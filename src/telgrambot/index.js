@@ -26,7 +26,6 @@ class TelgramBot {
         }
         this.onText = typeof onText === "function" ? onText : (msg, match) => {
         }
-        console.log(config)
         if (!config || typeof config !== "object" || !config.hasOwnProperty('token')) config = getEnvConfig()
         if (!config.hasOwnProperty('token')) throw new Error("TELEGRAM_TOKEN does not exist")
         this.config = config
