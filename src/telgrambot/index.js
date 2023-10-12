@@ -10,9 +10,9 @@ class TelgramBot {
     onPollingError
     onText
 
-    static getInstance( onCallbackQuery, onMessage, onText, onPollingError,config) {
+    static getInstance(onCallbackQuery, onMessage, onText, onPollingError, config) {
         if (!TelgramBot.instance) {
-            TelgramBot.instance = new TelgramBot(onCallbackQuery, onMessage, onText, onPollingError,config)
+            TelgramBot.instance = new TelgramBot(onCallbackQuery, onMessage, onText, onPollingError, config)
         }
         return TelgramBot.instance
     }
@@ -20,26 +20,35 @@ class TelgramBot {
     constructor(onCallbackQuery, onMessage, onText, onPollingError, config = null,) {
         this.onCallbackQuery = typeof onCallbackQuery === "function" ? onCallbackQuery : (msg) => {
         }
-        this.onMessage = typeof onMessage === "function" ? onCallbackQuery : (msg) => {
+        this.onMessage = typeof onMessage === "function" ? onMessage : (msg) => {
         }
-        this.onPollingError = typeof onPollingError === "function" ? onCallbackQuery : (msg) => {
+        this.onPollingError = typeof onPollingError === "function" ? onPollingError : (msg) => {
         }
         this.onText = typeof onText === "function" ? onText : (msg, match) => {
         }
         if (!config || typeof config !== "object" || !config.hasOwnProperty('token')) config = getEnvConfig()
         if (!config.hasOwnProperty('token')) throw new Error("TELEGRAM_TOKEN does not exist")
         this.config = config
-       this._init()
+        this.init()
     }
 
-    _init() {
+    init() {
         const bot = new TelegramBot(this.config.token, {polling: (this.config?.polling) ? this.config.polling : true});
-        bot.on("message", msg => this.onMessage(msg))
-        bot.on("callback_query", msg => this.onCallbackQuery(msg))
-        bot.on("polling_error", polling => this.onPollingError)
-        bot.onText(/^\/[A-Za-z0-9]{4,}$/, (msg, match) => this.onText);
+        bot.on("message", this.onMessage)
+        bot.on("callback_query", this.onCallbackQuery)
+        bot.on("polling_error", this.onPollingError)
+        bot.onText(/^\/[A-Za-z0-9]{4,}$/, this.onText);
         this.bot = bot
         return this.bot
+    }
+
+   async sendMessage(params){
+       try {
+           //逻辑代码
+           return Promise.resolve( await this.bot.send(...params))
+       } catch (e) {
+           return Promise.reject(e)
+       }
     }
 }
 
