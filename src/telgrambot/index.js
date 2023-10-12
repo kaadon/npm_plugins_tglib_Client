@@ -42,7 +42,7 @@ class TelgramBot {
         return this.bot
     }
 
-   async sendMessage(params){
+    async sendMessage(params)  {
        try {
            await this.bot.send(...params)
            //逻辑代码
