@@ -61,9 +61,11 @@ class TelgramBot {
         }
     }
 
-    async error(chat_id, err) {
+    async error(chat_id, err,messageId = null) {
         try {
-            await this.sendMessage(chat_id, err.message);
+            await this.sendMessage(chat_id, err.message,messageId?{
+                reply_to_message_id:messageId
+            }:{});
             //逻辑代码
             return Promise.resolve(true )
         } catch (e) {
