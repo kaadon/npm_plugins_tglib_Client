@@ -1,27 +1,28 @@
 {
-  "name": "@kaadon.com/telegrambot",
+  "name": "@kaadon.com/tglibclient",
   "version": "0.0.9",
-  "description": "kaadon.com's plugins telegramBot",
+  "description": "kaadon.com's plugins tglib",
   "keywords": [
     "kaadon",
     "plugins",
-    "telegramBot"
+    "tglibclient",
+    "tglib"
   ],
-  "main": "telegramBot/index.js",
+  "main": "tglib/index.js",
   "author": "kaadon.com",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --out-dir telegramBot"
+    "build": "babel src --out-dir tglib"
   },
   "files": [
-    "/telegramBot"
+    "/tglib"
   ],
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaadon/npm_plugins_telgramBot.git"
+    "url": "https://github.com/kaadon/npm_plugins_tglib_Client.git"
   },
   "devDependencies": {
     "@babel/cli": "^7",
@@ -29,10 +30,11 @@
     "@babel/generator": "^7",
     "@babel/parser": "^7",
     "@babel/preset-env": "^7",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "tdlib-types": "^0.1001008014.0"
   },
   "dependencies": {
-    "@types/node-telegram-bot-api": "0.61.8",
-    "node-telegram-bot-api": "0.63.0"
+    "prebuilt-tdlib": "^0.1008019.0",
+    "tdl": "^7.4.0"
   }
 }

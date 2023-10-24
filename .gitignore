@@ -206,5 +206,4 @@ Temporary Items
 dist
 /test/
 /.run/
-/helper/
-/telegramBot/
+/tglib/
